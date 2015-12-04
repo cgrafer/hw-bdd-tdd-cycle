@@ -1,0 +1,19 @@
+movie_1:
+    id: 100
+    title: first_movie
+    director: director_1
+    
+movie_2:
+    id: 200
+    title: second_movie
+    director: director_2
+
+movie_3:
+    id: 300
+    title: third_movie_same_director_as_first
+    director: director_1
+    
+movie_no_director:
+    id: 400
+    title: third_movie_same_director_as_first
+    director: ""
