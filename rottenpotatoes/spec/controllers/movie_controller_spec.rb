@@ -62,13 +62,26 @@ RSpec.describe MoviesController, type: :controller do
     describe 'deleting movie' do
         it 'should remove the moving from the db' do 
              a_movie = movies(:movie_1)
-             Movie.should_receive(:find).with("#{a_movie.id}")
+             Movie.should_receive(:find).with("100").and_return(a_movie)
              
               post :destroy,  {:id => a_movie.id}
                  response.should redirect_to("/movies")
              
         end
     end
+    
+    describe 'sort by title' do
+        it 'should sort by title when title passed' do 
+        
+            post :index,  {:sort => :title}
+        end
+        
+        it 'should sort by relase data when release date passed' do
+            post :index,  {:sort => :release_date}
+        
+        end
+    end
+    
     
     describe 'createing moving' do 
         it 'should create a movie in the db' do
