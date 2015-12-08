@@ -10302,3 +10302,1953 @@ Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
   [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
   [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
   [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (2.3ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 18:55:37', '2015-12-08 18:55:37')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 18:55:37', '2015-12-08 18:55:37')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 18:55:37', '2015-12-08 18:55:37')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 18:55:37', '2015-12-08 18:55:37')[0m
+  [1m[35m (7.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.5ms)
+Completed 200 OK in 129ms (Views: 125.2ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.9ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "movies" WHERE "movies"."id" = ?  [["id", 100]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/movies
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#create as HTML
+  Parameters: {"movie"=>"100"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 18:55:37.291412"], ["updated_at", "2015-12-08 18:55:37.291412"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (23.8ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 18:55:37.294075"], ["updated_at", "2015-12-08 18:55:37.294075"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 18:55:37.319964"], ["updated_at", "2015-12-08 18:55:37.319964"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."director" = ?  [["director", "director_1"]]
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 18:55:37.324502"], ["updated_at", "2015-12-08 18:55:37.324502"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 18:55:37.326428"], ["updated_at", "2015-12-08 18:55:37.326428"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 18:55:37.327963"], ["updated_at", "2015-12-08 18:55:37.327963"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mMovie Load (0.0ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."director" = ?  [["director", "director_1"]]
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 18:59:59', '2015-12-08 18:59:59')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 18:59:59', '2015-12-08 18:59:59')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 18:59:59', '2015-12-08 18:59:59')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 18:59:59', '2015-12-08 18:59:59')[0m
+  [1m[35m (9.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.4ms)
+Completed 200 OK in 25ms (Views: 17.5ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "movies" WHERE "movies"."id" = ?  [["id", 100]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/movies
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#create as HTML
+  Parameters: {"movie"=>"100"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 18:59:59.667396"], ["updated_at", "2015-12-08 18:59:59.667396"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 18:59:59.669654"], ["updated_at", "2015-12-08 18:59:59.669654"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 18:59:59.671776"], ["updated_at", "2015-12-08 18:59:59.671776"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."director" = ?  [["director", "director_1"]]
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 18:59:59.674838"], ["updated_at", "2015-12-08 18:59:59.674838"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 18:59:59.676384"], ["updated_at", "2015-12-08 18:59:59.676384"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 18:59:59.677677"], ["updated_at", "2015-12-08 18:59:59.677677"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mMovie Load (0.0ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."director" = ?  [["director", "director_1"]]
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 19:01:32', '2015-12-08 19:01:32')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 19:01:32', '2015-12-08 19:01:32')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 19:01:32', '2015-12-08 19:01:32')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 19:01:32', '2015-12-08 19:01:32')[0m
+  [1m[35m (15.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.4ms)
+Completed 200 OK in 29ms (Views: 22.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 7ms (Views: 1.4ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 100]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/movies
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#create as HTML
+  Parameters: {"movie"=>"100"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:01:32.470832"], ["updated_at", "2015-12-08 19:01:32.470832"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:01:32.473535"], ["updated_at", "2015-12-08 19:01:32.473535"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:01:32.475688"], ["updated_at", "2015-12-08 19:01:32.475688"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:01:32.479789"], ["updated_at", "2015-12-08 19:01:32.479789"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:01:32.481913"], ["updated_at", "2015-12-08 19:01:32.481913"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:01:32.483629"], ["updated_at", "2015-12-08 19:01:32.483629"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 19:03:16', '2015-12-08 19:03:16')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 19:03:16', '2015-12-08 19:03:16')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 19:03:16', '2015-12-08 19:03:16')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 19:03:16', '2015-12-08 19:03:16')[0m
+  [1m[35m (14.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 27ms (Views: 22.2ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 8ms (Views: 7.8ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 100]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/movies
+Completed 302 Found in 2ms (ActiveRecord: 0.6ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#create as HTML
+  Parameters: {"movie"=>"100"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:03:16.577193"], ["updated_at", "2015-12-08 19:03:16.577193"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:03:16.579524"], ["updated_at", "2015-12-08 19:03:16.579524"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:03:16.581023"], ["updated_at", "2015-12-08 19:03:16.581023"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:03:16.584476"], ["updated_at", "2015-12-08 19:03:16.584476"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:03:16.586520"], ["updated_at", "2015-12-08 19:03:16.586520"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:03:16.587801"], ["updated_at", "2015-12-08 19:03:16.587801"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 19:04:23', '2015-12-08 19:04:23')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 19:04:23', '2015-12-08 19:04:23')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 19:04:23', '2015-12-08 19:04:23')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 19:04:23', '2015-12-08 19:04:23')[0m
+  [1m[35m (7.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 27ms (Views: 18.7ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 100]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/movies
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#create as HTML
+  Parameters: {"movie"=>"100"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:04:23.538819"], ["updated_at", "2015-12-08 19:04:23.538819"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:04:23.541207"], ["updated_at", "2015-12-08 19:04:23.541207"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:04:23.542892"], ["updated_at", "2015-12-08 19:04:23.542892"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:04:23.547137"], ["updated_at", "2015-12-08 19:04:23.547137"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:04:23.549240"], ["updated_at", "2015-12-08 19:04:23.549240"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:04:23.551485"], ["updated_at", "2015-12-08 19:04:23.551485"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 19:08:11', '2015-12-08 19:08:11')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 19:08:11', '2015-12-08 19:08:11')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 19:08:11', '2015-12-08 19:08:11')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 19:08:11', '2015-12-08 19:08:11')[0m
+  [1m[35m (12.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 27ms (Views: 19.2ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 100]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/movies
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#create as HTML
+  Parameters: {"movie"=>"100"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:08:11.335888"], ["updated_at", "2015-12-08 19:08:11.335888"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:08:11.337897"], ["updated_at", "2015-12-08 19:08:11.337897"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:08:11.339331"], ["updated_at", "2015-12-08 19:08:11.339331"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:08:11.341975"], ["updated_at", "2015-12-08 19:08:11.341975"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:08:11.343492"], ["updated_at", "2015-12-08 19:08:11.343492"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:08:11.344773"], ["updated_at", "2015-12-08 19:08:11.344773"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 19:09:47', '2015-12-08 19:09:47')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 19:09:47', '2015-12-08 19:09:47')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 19:09:47', '2015-12-08 19:09:47')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 19:09:47', '2015-12-08 19:09:47')[0m
+  [1m[35m (11.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 22ms (Views: 17.9ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 100]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/movies
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#create as HTML
+  Parameters: {"movie"=>"100"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:09:47.345468"], ["updated_at", "2015-12-08 19:09:47.345468"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:09:47.348185"], ["updated_at", "2015-12-08 19:09:47.348185"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:09:47.349428"], ["updated_at", "2015-12-08 19:09:47.349428"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:09:47.352226"], ["updated_at", "2015-12-08 19:09:47.352226"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:09:47.353845"], ["updated_at", "2015-12-08 19:09:47.353845"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:09:47.355487"], ["updated_at", "2015-12-08 19:09:47.355487"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 19:13:57', '2015-12-08 19:13:57')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 19:13:57', '2015-12-08 19:13:57')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 19:13:57', '2015-12-08 19:13:57')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 19:13:57', '2015-12-08 19:13:57')[0m
+  [1m[35m (13.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 21ms (Views: 17.0ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (3.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 100]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/movies
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#create as HTML
+  Parameters: {"movie"=>"100"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:13:57.217715"], ["updated_at", "2015-12-08 19:13:57.217715"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:13:57.219996"], ["updated_at", "2015-12-08 19:13:57.219996"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:13:57.221342"], ["updated_at", "2015-12-08 19:13:57.221342"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:13:57.224437"], ["updated_at", "2015-12-08 19:13:57.224437"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:13:57.225956"], ["updated_at", "2015-12-08 19:13:57.225956"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:13:57.227735"], ["updated_at", "2015-12-08 19:13:57.227735"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 19:14:52', '2015-12-08 19:14:52')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 19:14:52', '2015-12-08 19:14:52')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 19:14:52', '2015-12-08 19:14:52')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 19:14:52', '2015-12-08 19:14:52')[0m
+  [1m[35m (14.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.5ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.5ms)
+Completed 200 OK in 35ms (Views: 29.0ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 100]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/movies
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#create as HTML
+  Parameters: {"movie"=>"100"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:14:52.956742"], ["updated_at", "2015-12-08 19:14:52.956742"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:14:52.959853"], ["updated_at", "2015-12-08 19:14:52.959853"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:14:52.961835"], ["updated_at", "2015-12-08 19:14:52.961835"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:14:52.967631"], ["updated_at", "2015-12-08 19:14:52.967631"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:14:52.970259"], ["updated_at", "2015-12-08 19:14:52.970259"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:14:52.972327"], ["updated_at", "2015-12-08 19:14:52.972327"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 19:15:43', '2015-12-08 19:15:43')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 19:15:43', '2015-12-08 19:15:43')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 19:15:43', '2015-12-08 19:15:43')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 19:15:43', '2015-12-08 19:15:43')[0m
+  [1m[35m (9.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.4ms)
+Completed 200 OK in 29ms (Views: 20.8ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 7ms (Views: 1.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 100]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/movies
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#create as HTML
+  Parameters: {"movie"=>"100"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:15:43.864226"], ["updated_at", "2015-12-08 19:15:43.864226"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:15:43.876190"], ["updated_at", "2015-12-08 19:15:43.876190"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:15:43.879080"], ["updated_at", "2015-12-08 19:15:43.879080"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:15:43.891801"], ["updated_at", "2015-12-08 19:15:43.891801"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:15:43.894042"], ["updated_at", "2015-12-08 19:15:43.894042"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:15:43.895894"], ["updated_at", "2015-12-08 19:15:43.895894"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (6.7ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 19:16:15', '2015-12-08 19:16:15')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 19:16:15', '2015-12-08 19:16:15')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 19:16:15', '2015-12-08 19:16:15')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 19:16:15', '2015-12-08 19:16:15')[0m
+  [1m[35m (8.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.5ms)
+Completed 200 OK in 28ms (Views: 21.6ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.4ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 100]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/movies
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#create as HTML
+  Parameters: {"movie"=>"100"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:16:16.136964"], ["updated_at", "2015-12-08 19:16:16.136964"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:16:16.140547"], ["updated_at", "2015-12-08 19:16:16.140547"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:16:16.142783"], ["updated_at", "2015-12-08 19:16:16.142783"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:16:16.148055"], ["updated_at", "2015-12-08 19:16:16.148055"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:16:16.150339"], ["updated_at", "2015-12-08 19:16:16.150339"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:16:16.153071"], ["updated_at", "2015-12-08 19:16:16.153071"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 19:17:32', '2015-12-08 19:17:32')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 19:17:32', '2015-12-08 19:17:32')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 19:17:32', '2015-12-08 19:17:32')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 19:17:32', '2015-12-08 19:17:32')[0m
+  [1m[35m (10.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 22ms (Views: 18.6ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (2.0ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 100]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/movies
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#create as HTML
+  Parameters: {"movie"=>"100"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:17:32.676334"], ["updated_at", "2015-12-08 19:17:32.676334"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:17:32.678191"], ["updated_at", "2015-12-08 19:17:32.678191"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:17:32.679410"], ["updated_at", "2015-12-08 19:17:32.679410"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:17:32.682571"], ["updated_at", "2015-12-08 19:17:32.682571"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:17:32.684164"], ["updated_at", "2015-12-08 19:17:32.684164"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:17:32.685491"], ["updated_at", "2015-12-08 19:17:32.685491"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 19:18:06', '2015-12-08 19:18:06')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 19:18:06', '2015-12-08 19:18:06')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 19:18:06', '2015-12-08 19:18:06')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 19:18:06', '2015-12-08 19:18:06')[0m
+  [1m[35m (9.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 20ms (Views: 16.4ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 5ms (Views: 0.9ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 100]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/movies
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#create as HTML
+  Parameters: {"movie"=>"100"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:18:06.769640"], ["updated_at", "2015-12-08 19:18:06.769640"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:18:06.772740"], ["updated_at", "2015-12-08 19:18:06.772740"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:18:06.775451"], ["updated_at", "2015-12-08 19:18:06.775451"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:18:06.779210"], ["updated_at", "2015-12-08 19:18:06.779210"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:18:06.781071"], ["updated_at", "2015-12-08 19:18:06.781071"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:18:06.782684"], ["updated_at", "2015-12-08 19:18:06.782684"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 19:18:40', '2015-12-08 19:18:40')
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 19:18:40', '2015-12-08 19:18:40')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 19:18:40', '2015-12-08 19:18:40')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 19:18:40', '2015-12-08 19:18:40')[0m
+  [1m[35m (9.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 22ms (Views: 18.3ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 100]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/movies
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#create as HTML
+  Parameters: {"movie"=>"100"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:18:40.825097"], ["updated_at", "2015-12-08 19:18:40.825097"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:18:40.827413"], ["updated_at", "2015-12-08 19:18:40.827413"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:18:40.828610"], ["updated_at", "2015-12-08 19:18:40.828610"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:18:40.831590"], ["updated_at", "2015-12-08 19:18:40.831590"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:18:40.832926"], ["updated_at", "2015-12-08 19:18:40.832926"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:18:40.834291"], ["updated_at", "2015-12-08 19:18:40.834291"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 19:19:07', '2015-12-08 19:19:07')
+  [1m[36mFixture Insert (12.5ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 19:19:07', '2015-12-08 19:19:07')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 19:19:07', '2015-12-08 19:19:07')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 19:19:07', '2015-12-08 19:19:07')[0m
+  [1m[35m (26.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 17ms (Views: 13.3ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (5.3ms)
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.1ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 100]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#create as HTML
+  Parameters: {"movie"=>"100"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:19:07.377192"], ["updated_at", "2015-12-08 19:19:07.377192"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:19:07.379804"], ["updated_at", "2015-12-08 19:19:07.379804"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:19:07.381032"], ["updated_at", "2015-12-08 19:19:07.381032"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:19:07.384690"], ["updated_at", "2015-12-08 19:19:07.384690"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:19:07.386132"], ["updated_at", "2015-12-08 19:19:07.386132"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:19:07.387406"], ["updated_at", "2015-12-08 19:19:07.387406"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (6.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 19:19:42', '2015-12-08 19:19:42')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 19:19:42', '2015-12-08 19:19:42')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 19:19:42', '2015-12-08 19:19:42')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 19:19:42', '2015-12-08 19:19:42')[0m
+  [1m[35m (11.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (4.0ms)
+Completed 200 OK in 26ms (Views: 22.3ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 5ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 100]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/movies
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#create as HTML
+  Parameters: {"movie"=>"100"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:19:42.522519"], ["updated_at", "2015-12-08 19:19:42.522519"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:19:42.525314"], ["updated_at", "2015-12-08 19:19:42.525314"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:19:42.527581"], ["updated_at", "2015-12-08 19:19:42.527581"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:19:42.531141"], ["updated_at", "2015-12-08 19:19:42.531141"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:19:42.532997"], ["updated_at", "2015-12-08 19:19:42.532997"]]
+  [1m[36m (0.4ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:19:42.534800"], ["updated_at", "2015-12-08 19:19:42.534800"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 19:20:27', '2015-12-08 19:20:27')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 19:20:27', '2015-12-08 19:20:27')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 19:20:27', '2015-12-08 19:20:27')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 19:20:27', '2015-12-08 19:20:27')[0m
+  [1m[35m (13.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 21ms (Views: 17.6ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 100]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/movies
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#create as HTML
+  Parameters: {"movie"=>"100"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:20:27.645914"], ["updated_at", "2015-12-08 19:20:27.645914"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:20:27.648512"], ["updated_at", "2015-12-08 19:20:27.648512"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:20:27.650633"], ["updated_at", "2015-12-08 19:20:27.650633"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:20:27.654619"], ["updated_at", "2015-12-08 19:20:27.654619"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:20:27.656433"], ["updated_at", "2015-12-08 19:20:27.656433"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:20:27.658074"], ["updated_at", "2015-12-08 19:20:27.658074"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.5ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 19:21:04', '2015-12-08 19:21:04')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 19:21:04', '2015-12-08 19:21:04')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 19:21:04', '2015-12-08 19:21:04')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 19:21:04', '2015-12-08 19:21:04')[0m
+  [1m[35m (12.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.4ms)
+Completed 200 OK in 28ms (Views: 23.8ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 100]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/movies
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#create as HTML
+  Parameters: {"movie"=>"100"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:21:04.935780"], ["updated_at", "2015-12-08 19:21:04.935780"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:21:04.938810"], ["updated_at", "2015-12-08 19:21:04.938810"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:21:04.940746"], ["updated_at", "2015-12-08 19:21:04.940746"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:21:04.949927"], ["updated_at", "2015-12-08 19:21:04.949927"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:21:04.951678"], ["updated_at", "2015-12-08 19:21:04.951678"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:21:04.953028"], ["updated_at", "2015-12-08 19:21:04.953028"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2015-12-08 19:24:35.219547"], ["updated_at", "2015-12-08 19:24:35.219547"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2015-12-08 19:24:35.226195"], ["updated_at", "2015-12-08 19:24:35.226195"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2015-12-08 19:24:35.227921"], ["updated_at", "2015-12-08 19:24:35.227921"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2015-12-08 19:24:35.229225"], ["updated_at", "2015-12-08 19:24:35.229225"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Alien"]]
+Started GET "/movies/403/edit" for 127.0.0.1 at 2015-12-08 19:24:35 +0000
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"403"}
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 403]]
+  Rendered movies/edit.html.haml within layouts/application (45.3ms)
+Completed 200 OK in 243ms (Views: 241.1ms | ActiveRecord: 0.4ms)
+Started PUT "/movies/403" for 127.0.0.1 at 2015-12-08 19:24:35 +0000
+Processing by MoviesController#update as HTML
+  Parameters: {"utf8"=>"✓", "movie"=>{"title"=>"Alien", "rating"=>"R", "release_date(1i)"=>"1979", "release_date(2i)"=>"5", "release_date(3i)"=>"25", "director"=>"Ridley Scott"}, "commit"=>"Update Movie Info", "id"=>"403"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 403]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "movies" SET "director" = ?, "updated_at" = ? WHERE "movies"."id" = ?[0m  [["director", "Ridley Scott"], ["updated_at", "2015-12-08 19:24:35.544482"], ["id", 403]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/movies/403
+Completed 302 Found in 7ms (ActiveRecord: 0.4ms)
+Started GET "/movies/403" for 127.0.0.1 at 2015-12-08 19:24:35 +0000
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"403"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 403]]
+  Rendered movies/show.html.haml within layouts/application (3.0ms)
+Completed 200 OK in 6ms (Views: 6.0ms | ActiveRecord: 0.1ms)
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1  [["title", "Alien"]]
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2015-12-08 19:24:35.563801"], ["updated_at", "2015-12-08 19:24:35.563801"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2015-12-08 19:24:35.565921"], ["updated_at", "2015-12-08 19:24:35.565921"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2015-12-08 19:24:35.567626"], ["updated_at", "2015-12-08 19:24:35.567626"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2015-12-08 19:24:35.569329"], ["updated_at", "2015-12-08 19:24:35.569329"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Star Wars"]]
+Started GET "/movies/401" for 127.0.0.1 at 2015-12-08 19:24:35 +0000
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"401"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 401]]
+  Rendered movies/show.html.haml within layouts/application (0.8ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+Started GET "/search_directors?id=401" for 127.0.0.1 at 2015-12-08 19:24:35 +0000
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"401"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 401]]
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."director" = ?  [["director", "George Lucas"]]
+  Rendered movies/search_directors.html.haml within layouts/application (4.6ms)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2015-12-08 19:24:35.606695"], ["updated_at", "2015-12-08 19:24:35.606695"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2015-12-08 19:24:35.608707"], ["updated_at", "2015-12-08 19:24:35.608707"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2015-12-08 19:24:35.611705"], ["updated_at", "2015-12-08 19:24:35.611705"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2015-12-08 19:24:35.613181"], ["updated_at", "2015-12-08 19:24:35.613181"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Alien"]]
+Started GET "/movies/403" for 127.0.0.1 at 2015-12-08 19:24:35 +0000
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"403"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 403]]
+  Rendered movies/show.html.haml within layouts/application (0.8ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.1ms)
+Started GET "/search_directors?id=403" for 127.0.0.1 at 2015-12-08 19:24:35 +0000
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"403"}
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 403]]
+Redirected to http://www.example.com/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+Started GET "/movies" for 127.0.0.1 at 2015-12-08 19:24:35 +0000
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')
+  Rendered movies/index.html.haml within layouts/application (6.6ms)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 19:26:34', '2015-12-08 19:26:34')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 19:26:34', '2015-12-08 19:26:34')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 19:26:34', '2015-12-08 19:26:34')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 19:26:34', '2015-12-08 19:26:34')[0m
+  [1m[35m (14.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.5ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.5ms)
+Completed 200 OK in 41ms (Views: 30.0ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.4ms)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 100]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/movies
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#create as HTML
+  Parameters: {"movie"=>"100"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:26:34.432166"], ["updated_at", "2015-12-08 19:26:34.432166"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:26:34.435585"], ["updated_at", "2015-12-08 19:26:34.435585"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:26:34.437594"], ["updated_at", "2015-12-08 19:26:34.437594"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:26:34.441037"], ["updated_at", "2015-12-08 19:26:34.441037"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:26:34.442808"], ["updated_at", "2015-12-08 19:26:34.442808"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:26:34.444207"], ["updated_at", "2015-12-08 19:26:34.444207"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."director" = ?[0m  [["director", "director_1"]]
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.5ms)[0m  [1mDELETE FROM "movies"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (100, 'first_movie', 'director_1', '2015-12-08 19:27:14', '2015-12-08 19:27:14')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (200, 'second_movie', 'director_2', '2015-12-08 19:27:14', '2015-12-08 19:27:14')[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (300, 'third_movie_same_director_as_first', 'director_1', '2015-12-08 19:27:14', '2015-12-08 19:27:14')
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "movies" ("id", "title", "director", "created_at", "updated_at") VALUES (400, 'third_movie_same_director_as_first', '', '2015-12-08 19:27:14', '2015-12-08 19:27:14')[0m
+  [1m[35m (12.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.4ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.4ms)
+Completed 200 OK in 38ms (Views: 33.6ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 200]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 100]]
+  Rendered movies/search_directors.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 400]]
+Processing by MoviesController#search_directors as HTML
+  Parameters: {"id"=>"400"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 400]]
+Redirected to http://test.host/movies
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 100]]
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"100"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 100]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/movies
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=title
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by MoviesController#index as HTML
+  Parameters: {"sort"=>"release_date"}
+Redirected to http://test.host/movies?ratings%5BG%5D=G&ratings%5BNC-17%5D=NC-17&ratings%5BPG%5D=PG&ratings%5BPG-13%5D=PG-13&ratings%5BR%5D=R&sort=release_date
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:27:14.314875"], ["updated_at", "2015-12-08 19:27:14.314875"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:27:14.317428"], ["updated_at", "2015-12-08 19:27:14.317428"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:27:14.320319"], ["updated_at", "2015-12-08 19:27:14.320319"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."director" = ?  [["director", "director_1"]]
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_1"], ["director", "director_1"], ["created_at", "2015-12-08 19:27:14.323707"], ["updated_at", "2015-12-08 19:27:14.323707"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "movie_2"], ["director", "director_2"], ["created_at", "2015-12-08 19:27:14.325284"], ["updated_at", "2015-12-08 19:27:14.325284"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "director", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "movie_3"], ["director", "director_3"], ["created_at", "2015-12-08 19:27:14.326695"], ["updated_at", "2015-12-08 19:27:14.326695"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mMovie Load (0.0ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."director" = ?  [["director", "director_1"]]
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m

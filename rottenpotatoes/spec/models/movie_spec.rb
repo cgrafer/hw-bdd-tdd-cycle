@@ -23,7 +23,7 @@ RSpec.describe Movie, type: :model do
           results = Movie.search_directors('director_1')
           
           results.each {|movie| 
-            movie.director.should == 'director_1'
+            expect(movie.director).to  eq('director_1')
           }
       end
       
@@ -46,7 +46,7 @@ RSpec.describe Movie, type: :model do
           results = Movie.search_directors('director_1')
           
           results.each {|movie|
-            movie.director.should_not == 'director_2'
+            expect(movie.director).to_not eq('director_2')
             
           }
          
