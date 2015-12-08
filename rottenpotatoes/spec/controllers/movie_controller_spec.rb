@@ -55,9 +55,30 @@ RSpec.describe MoviesController, type: :controller do
              
        
             #test that controller goes back to index page when emptycucu director
-           response.should redirect_to("/")
+           response.should redirect_to("/movies")
+        end
+    end
+        
+    describe 'deleting movie' do
+        it 'should remove the moving from the db' do 
+             a_movie = movies(:movie_1)
+             Movie.should_receive(:find).with("#{a_movie.id}")
+             
+              post :destroy,  {:id => a_movie.id}
+                 response.should redirect_to("/movies")
+             
+        end
+    end
+    
+    describe 'createing moving' do 
+        it 'should create a movie in the db' do
+        a_movie = movies(:movie_1)
+
+        Movie.should_receive(:create).with(a_movie)
+        
+        post :create, {:movie => a_movie}
         end
         
-        
     end
+    
 end
